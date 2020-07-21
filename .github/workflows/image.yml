@@ -1,0 +1,22 @@
+name: Docker Image
+# This workflow is triggered on pushes to the repository.
+on: [pull_request]
+
+jobs:
+  build:
+    name: Build Image
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v1
+        with:
+          username: imrehg
+          password: ${{ secrets.GITHUB_TOKEN }}
+          repository: docker.pkg.github.com/${{ GITHUB_REPOSITORY }}
+          tag_with_ref: true
+          tag_with_sha: true
+          path: image
