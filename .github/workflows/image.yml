@@ -16,7 +16,8 @@ jobs:
         with:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-          repository: docker.pkg.github.com/$GITHUB_REPOSITORY
+          registry: docker.pkg.github.com
+          repository: $GITHUB_REPOSITORY
           tag_with_ref: true
           tag_with_sha: true
           path: image
