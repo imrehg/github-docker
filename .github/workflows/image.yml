@@ -18,5 +18,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
           repository: ${{ github.repository }}/basic
-          tags: ${{ github.head_ref }}
+          tag_with_ref: true
+          tags: ${{ github.event.pull_request.head.sha }}
           path: image
